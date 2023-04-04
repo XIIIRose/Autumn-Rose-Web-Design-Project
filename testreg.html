@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Wedding Registration</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script src="./testreg.js"></script>
+<style>
+body,h1,h2{font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+p {line-height: 2}
+</style>
+</head>
+<body>
+<div class="w3-container w3-padding-64 w3-pale-red w3-center w3-wide">
+  <h1>PLEASE COMPLETE THE FIELDS BELOW</h1>
+  <form id="form" method="post" onsubmit="return chkForm();">
+			<div id="userDiv" class="form-group">
+			<label for="userName">Username:</label><br/>
+			<input id="userName" type="text" name="userName" required="required"
+				minlength="6" maxlength="50" class="form-control" onblur="chkUsername();"/><br/>
+			<span id=errUname></span>
+			</div>
+			
+			<div id="passDiv" class="form-group">
+			<label for="password">Password:</label><br/>
+			<input id="password" type="password" name="password"
+				required="required" class="form-control"
+				onblur="chkPass();"/><br/>
+			<span id="passErr"></span>
+			</div>
+			<div id="verpassDiv" class="form-group">
+			<label for="verpassword">Re-enter Password:</label><br/>
+			<input id="verpassword" type="password" name="verpassword"
+				required="required" class="form-control"
+				onblur="chkPassword();"/><br/>
+			<span id="verpassErr"></span>
+			</div>
+			<hr/>
+			
+			<div id="fnameDiv" class="form-group">
+			<label for="firstName">First name:</label><br/>
+			<input id="firstName" type="text" name="firstName"
+				required="required" class="form-control"
+				onblur="chkFname();"/><br/>
+			<span id="fnameErr"></span>
+			</div>
+			
+			<div id="lnameDiv" class="form-group">
+			<label for="lastName">Last name:</label><br/>
+			<input id="lastName" type="text" name="lastName"
+				required="required" class="form-control"
+				onblur="chkLname();"/><br/>
+			<span id="lnameErr"></span>
+			</div>
+			
+			<div id="addr1Div" class="form-group">
+			<label for="addressLine1">Address Line 1:</label><br/>
+			<input id="addressLine1" type="text" name="addressLine1"
+				class="form-control" required="required"
+				onblur="chkAddr1();"/><br/>
+			<span id="addr1Err"></span>
+			</div>
+			
+			<div id="addr2Div" class="form-group">
+			<label for="addressLine2">Address Line 2:</label><br/>
+			<input id="addressLine2" type="text" name="addressLine2"
+			class="form-control" onblur="chkAddr2();"/><br/>
+			<span id="addr2Err"></span>
+			</div>
+			
+			<div id="cityDiv" class="form-group">
+			<label for="city">City:</label><br/>
+			<input id="city" type="text" name="city" class="form-control"
+				required="required" onblur="chkCity();"/><br/>
+			<span id="cityErr"></span>
+			</div>
+			
+			<label for="state">State:</label><br/>
+			<select state="state" id="state" >
+				<option value="alabama">Alabama</option>
+				<option value="alaska">Alaska</option>
+				<option value="arizona">Arizona</option>
+				<option value="arkansas">Arkansas</option>
+				<option value="california">California</option>
+				<option value="colorado">Colorado</option>
+				<option value="conneticut">Conneticut</option>
+				<option value="delaware">Delaware</option>
+				<option value="florida">Florida</option>
+				<option value="georgia">Georgia</option>
+				<option value="hawaii">Hawaii</option>
+				<option value="idaho">Idaho</option>
+				<option value="illinois">Illinois</option>
+				<option value="indiana">Indiana</option>
+				<option value="iowa">Iowa</option>
+				<option value="kansas">Kansas</option>
+				<option value="kentucky">Kentucky</option>
+				<option value="louisiana">Louisiana</option>
+				<option value="maine">Maine</option>
+				<option value="maryland">Maryland</option>
+				<option value="massachusets">Massachusets</option>
+				<option value="michigan">Michigan</option>
+				<option value="minnesota">Minnesota</option>
+				<option value="mississippi">Mississippi</option>
+				<option value="missouri">Missouri</option>
+				<option value="montana">Montana</option>
+				<option value="nebraska">Nebraska</option>
+				<option value="nevada">Nevada</option>
+				<option value="newhampshire">New Hampshire</option>
+				<option value="newjersey">New Jersey</option>
+				<option value="newmexico">New Mexico</option>
+				<option value="newyork">New York</option>
+				<option value="northcarolina">North Carolina</option>
+				<option value="northdakota">North Dakota</option>
+				<option value="ohio">Ohio</option>
+				<option value="oklahoma">Oklahoma</option>
+				<option value="oregon">Oregon</option>
+				<option value="pennsylvania">Pennsylvania</option>
+				<option value="rhode island">Rhode Island</option>
+				<option value="southcarolina">South Carolina</option>
+			</select><br/>
+			<span id="stateErr"></span>
+			 
+		<div id="zipDiv" class="form-group">
+		<label for="zipCode">Zip Code:</label><br/>
+			<input id="zipCode" type="text" name="zipCode" class="form-control"
+				required="required" maxlength="10" onblur="chkZip();"/><br/>
+			<span id="zipErr"></span>
+		</div>
+			
+		<div id="phoneDiv" class="form-group">
+		<label for="phoneNumber">Phone Number:</label><br/>
+			<input id="phoneNumber" type="text" name="phoneNumber" class="form-control"
+				required="required" maxlength="10" onblur="chkPhone();"/><br/>
+			<span id="phoneErr"></span>
+		</div>
+		
+		<div id="emailDiv" class="form-group">
+		<label for="email" class="control-label">Email:</label><br/>
+			<input id="email" type="email" name="email" required="required" class="form-control"
+				onblur="chkEmail();" placeholder="x@x.x"><br/>
+			<span id="emailErr"></span>
+		</div>
+			<hr/>
+		
+		<div id="genderDiv" class="form-group">
+		<label for="gender">Gender:</label><br/>
+			<input type="radio" name="gender" id="maleGender"
+				value="male"/> <label for="maleGender">Male</label><br/>
+			<input type="radio"
+				name="gender" id="femaleGender"
+				value="female"/> <label for="femaleGender">Female</label><br/>
+			<input type="radio"
+				name="gender" id="otherGender"
+				value="other"/> <label for="otherGender">Other</label><br/><br/>
+			<span id="genderErr"></span>
+		</div>
+		
+		<div id="msDiv" class="form-group">
+		<label for="maritalStatus">Marital Status:</label><br/>
+			<input type="radio"
+				name="maritalStatus" id="singleStatus"
+				value="single"/> <label for="singleStatus">Single</label><br/>
+			<input type="radio"
+				name="maritalStatus" id="marriedStatus"
+				value="married"/> <label for="marriedStatus">Married</label><br/>
+			<input type="radio"
+				name="maritalStatus" id="domesticPartnerStatus"
+				value="domesticPartner"/> <label for="domesticPartnerStatus">Domestic Partnership</label><br/>
+			<input type="radio"
+				name="maritalStatus" id="widowerStatus"
+				value="widower"/> <label for="widowerStatus">Widow(er)</label><br/>
+			<input type="radio"
+				name="maritalStatus" id="divorcedStatus"
+				value="divorced"/> <label for="divorcedStatus">Divorced</label><br/><br/>
+			<span id="msErr"></span>
+			</div>
+			
+			<div id="bdayDiv" class="form-group">
+			<label for="birthDay">Date of birth:</label><br/>
+			<input id="birthDay" type="date" name="birthDay" class="form-control"
+				required="required"><br/>
+			<span id="bdayErr"></span>
+			</div>
+			<hr/>
+			
+			<input type="submit" value="Submit Data" onsubmit="chkFields();"/>
+			<input type="reset" value="Reset Data"
+				class="btn btn-info" onclick="resetFields();"/>
+		</form>
+		</div>
+	</body>
+</html>

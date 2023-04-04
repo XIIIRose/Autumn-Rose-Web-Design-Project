@@ -1,0 +1,11 @@
+@keyframes themeColors {
+	0% {background-color: #080502}
+	20% {background-color: #804C70}
+	40% {background-color: #B67982}
+	60% {background-color: #6F1018}
+	80% {background-color: #DFBECD}
+}
+div {
+	-webkit-animation: themeColors 20s infinite;
+	animation: themeColors 10s infinite;
+}
